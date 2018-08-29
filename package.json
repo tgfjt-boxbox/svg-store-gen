@@ -1,0 +1,23 @@
+{
+  "name": "svg-store-gen",
+  "version": "1.0.0",
+  "description": "Hi",
+  "main": "index.js",
+  "scripts": {
+    "sprite": "svg-sprite --svg-xmldecl=false --symbol --symbol-sprite=store.svg --symbol-example --symbol-example-template store.tmpl.html --symbol-dest=docs --symbol-example-dest=index.html icons/*.svg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tgfjt-boxbox/svg-store-gen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tgfjt-boxbox/svg-store-gen/issues"
+  },
+  "homepage": "https://github.com/tgfjt-boxbox/svg-store-gen#readme",
+  "dependencies": {
+    "svg-sprite": "^1.4.0"
+  }
+}

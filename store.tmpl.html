@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG</title>
+  <style>
+    body {
+      padding: 3rem;
+      font-family: Helvetica, sans-serif;
+    }
+    a {
+      color: #C5559D;
+    }
+    button {
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    #clip {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    .icon svg {
+      width: 3rem;
+      height: 3rem;
+    }
+    .icon__title {
+      font-size: small;
+    }
+  </style>
+</head>
+<body>
+  <svg id="svg-store" width="0" height="0" style="position:absolute">
+    {{#shapes}}{{{svg}}}{{/shapes}}
+  </svg>
+  <h1>Welcome to SVG Store!</h1>
+  <p>
+    <a href="https://github.com/jkphl/svg-sprite/blob/master/docs/templating.md">Templating | svg-sprite</a>
+  </p>
+  <h2>symbols</h2>
+  <ul>
+  {{#shapes}}
+    <li class="icon">
+      <div class="icon__title">
+        {{name}}
+      </div>
+      <button type="button" class="icon__symbol">
+        <svg><use xlink:href="#{{name}}"></svg>
+      </button>
+    </li>
+  {{/shapes}}
+  </ul>
+  <input id="clip" type="text"></input>
+  <script>
+    const clipboard = document.getElementById('clip');
+    const icons = document.querySelectorAll('.icon__symbol');
+
+    Array.from(icons).forEach((el) => {
+      el.addEventListener('click', () => {
+        clipboard.value = el.innerHTML.trim();
+        clipboard.select();
+
+        if (document.execCommand('copy')) {
+          alert('Success: Copied!');
+        } else {
+          alert('Failed: Copied');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
